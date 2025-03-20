@@ -88,10 +88,9 @@
 
 ## Инструкция по запуску
 
-1. Убедитесь, что у вас установлен .NET SDK.
-2. Склонируйте репозиторий с проектом.
-3. Выполните команды `dotnet add package Microsoft.Extensions.DependencyInjection` и `dotnet add package Newtonsoft.Json`
-4. Перейдите в папку с проектом и выполните команду `dotnet run`.
-5. Следуйте инструкциям в консоли для взаимодействия с приложением.
+1. Склонируйте репозиторий с проектом.
+2. Выполните команды `dotnet add package Microsoft.Extensions.DependencyInjection` и `dotnet add package Newtonsoft.Json`
+3. Перейдите в папку с проектом и выполните команду `dotnet run`.
+4. Следуйте инструкциям в консоли для взаимодействия.
 
 ---
