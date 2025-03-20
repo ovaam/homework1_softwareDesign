@@ -11,7 +11,7 @@ namespace bigHomeWork.Services
 
         public JsonDataImporter(IDataService dataService)
         {
-            _dataService = dataService;
+            _dataService = dataService; // Зависимость от IDataService
         }
 
         public List<BankAccount> ImportBankAccounts(string filePath)

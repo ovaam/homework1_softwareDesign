@@ -16,11 +16,11 @@ namespace bigHomeWork.App
             services.AddSingleton<BankAccountFacade>();
 
             // Регистрация сервисов
-            services.AddSingleton<IDataService, DataService>();
+            services.AddSingleton<IDataService, DataService>(); // Регистрация IDataService
             services.AddSingleton<DataServiceProxy>();
 
             // Регистрация импортера
-            services.AddSingleton<IDataImporter, JsonDataImporter>();
+            services.AddSingleton<IDataImporter, JsonDataImporter>(); // JsonDataImporter зависит от IDataService
 
             return services.BuildServiceProvider();
         }

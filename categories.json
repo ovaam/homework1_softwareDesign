@@ -1,0 +1,4 @@
+[
+  { "Id": 1, "Type": "Expense", "Name": "Кафе" },
+  { "Id": 2, "Type": "Income", "Name": "Зарплата" }
+]

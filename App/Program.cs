@@ -20,13 +20,6 @@ namespace bigHomeWork.App
             var bankAccountFacade = serviceProvider.GetService<BankAccountFacade>();
             var jsonDataImporter = serviceProvider.GetService<JsonDataImporter>();
 
-            // Проверка на null
-            if (categoryFacade == null || operationFacade == null || bankAccountFacade == null || jsonDataImporter == null)
-            {
-                Console.WriteLine("Ошибка: один из сервисов не был инициализирован.");
-                return;
-            }
-
             while (true)
             {
                 Console.WriteLine("1. Создать счет");
@@ -34,8 +27,8 @@ namespace bigHomeWork.App
                 Console.WriteLine("3. Создать операцию");
                 Console.WriteLine("4. Показать разницу доходов и расходов за период");
                 Console.WriteLine("5. Пересчитать баланс");
-                Console.WriteLine("6. Импорт данных из файла");
-                Console.WriteLine("7. Выйти");
+                //Console.WriteLine("6. Импорт данных из файла");
+                Console.WriteLine("0. Выйти");
                 Console.Write("Выберите действие: ");
                 var choice = Console.ReadLine();
 
@@ -59,7 +52,7 @@ namespace bigHomeWork.App
                     case "6":
                         ImportData(jsonDataImporter, bankAccountFacade, categoryFacade, operationFacade);
                         break;
-                    case "7":
+                    case "0":
                         return;
                     default:
                         Console.WriteLine("Неверный выбор. Попробуйте снова.");

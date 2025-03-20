@@ -1,0 +1,4 @@
+[
+  { "Id": 1, "Type": "Expense", "BankAccountId": 1, "Amount": 50, "Date": "2023-10-01", "Description": "Обед в кафе", "CategoryId": 1 },
+  { "Id": 2, "Type": "Income", "BankAccountId": 1, "Amount": 2000, "Date": "2023-10-05", "Description": "Зарплата", "CategoryId": 2 }
+]
