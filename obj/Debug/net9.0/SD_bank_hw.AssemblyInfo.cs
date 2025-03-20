@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SD_bank_hw")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94fff55bad625233389317c8d862b26de10ffca2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0914c7e827f01b7708d82ec15defa1e375574a89")]
 [assembly: System.Reflection.AssemblyProductAttribute("SD_bank_hw")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SD_bank_hw")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

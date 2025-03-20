@@ -11,18 +11,13 @@ namespace bigHomeWork.Services.Facades
             categories.Add(category);
         }
 
-        public Category GetCategory(int id)
+        public void EditCategory(int id, string newType, string newName)
         {
-            return categories.FirstOrDefault(c => c.Id == id);
-        }
-
-        public void UpdateCategory(Category category)
-        {
-            var existingCategory = categories.FirstOrDefault(c => c.Id == category.Id);
-            if (existingCategory != null)
+            var category = categories.FirstOrDefault(c => c.Id == id);
+            if (category != null)
             {
-                existingCategory.Name = category.Name;
-                existingCategory.Type = category.Type;
+                category.Type = newType;
+                category.Name = newName;
             }
         }
 
@@ -33,6 +28,11 @@ namespace bigHomeWork.Services.Facades
             {
                 categories.Remove(category);
             }
+        }
+
+        public List<Category> GetCategories()
+        {
+            return categories;
         }
     }
 }

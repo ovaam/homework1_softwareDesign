@@ -18,17 +18,22 @@ namespace bigHomeWork.App
             var categoryFacade = serviceProvider.GetService<CategoryFacade>();
             var operationFacade = serviceProvider.GetService<OperationFacade>();
             var bankAccountFacade = serviceProvider.GetService<BankAccountFacade>();
-            var jsonDataImporter = serviceProvider.GetService<JsonDataImporter>();
+            //var jsonDataImporter = serviceProvider.GetService<JsonDataImporter>();
 
             while (true)
             {
                 Console.WriteLine("1. Создать счет");
-                Console.WriteLine("2. Создать категорию");
-                Console.WriteLine("3. Создать операцию");
-                Console.WriteLine("4. Показать разницу доходов и расходов за период");
-                Console.WriteLine("5. Пересчитать баланс");
-                //Console.WriteLine("6. Импорт данных из файла");
-                Console.WriteLine("0. Выйти");
+                Console.WriteLine("2. Редактировать счет");
+                Console.WriteLine("3. Удалить счет");
+                Console.WriteLine("4. Создать категорию");
+                Console.WriteLine("5. Редактировать категорию");
+                Console.WriteLine("6. Удалить категорию");
+                Console.WriteLine("7. Создать операцию");
+                Console.WriteLine("8. Редактировать операцию");
+                Console.WriteLine("9. Удалить операцию");
+                Console.WriteLine("10. Показать разницу доходов и расходов за период");
+                Console.WriteLine("11. Пересчитать баланс");
+                Console.WriteLine("12. Выйти");
                 Console.Write("Выберите действие: ");
                 var choice = Console.ReadLine();
 
@@ -38,21 +43,36 @@ namespace bigHomeWork.App
                         CreateBankAccount(bankAccountFacade);
                         break;
                     case "2":
-                        CreateCategory(categoryFacade);
+                        EditBankAccount(bankAccountFacade);
                         break;
                     case "3":
-                        CreateOperation(operationFacade);
+                        DeleteBankAccount(bankAccountFacade);
                         break;
                     case "4":
-                        ShowIncomeExpenseDifference(operationFacade);
+                        CreateCategory(categoryFacade);
                         break;
                     case "5":
-                        RecalculateBalances(bankAccountFacade, operationFacade);
+                        EditCategory(categoryFacade);
                         break;
                     case "6":
-                        ImportData(jsonDataImporter, bankAccountFacade, categoryFacade, operationFacade);
+                        DeleteCategory(categoryFacade);
                         break;
-                    case "0":
+                    case "7":
+                        CreateOperation(operationFacade);
+                        break;
+                    case "8":
+                        EditOperation(operationFacade);
+                        break;
+                    case "9":
+                        DeleteOperation(operationFacade);
+                        break;
+                    case "10":
+                        ShowIncomeExpenseDifference(operationFacade);
+                        break;
+                    case "11":
+                        RecalculateBalances(bankAccountFacade, operationFacade);
+                        break;
+                    case "12":
                         return;
                     default:
                         Console.WriteLine("Неверный выбор. Попробуйте снова.");
@@ -111,6 +131,80 @@ namespace bigHomeWork.App
             Console.WriteLine("Операция создана.");
         }
 
+        private static void EditBankAccount(BankAccountFacade facade)
+        {
+            Console.Write("Введите ID счета для редактирования: ");
+            var id = int.Parse(Console.ReadLine());
+            Console.Write("Введите новое название счета: ");
+            var newName = Console.ReadLine();
+            Console.Write("Введите новый баланс: ");
+            var newBalance = decimal.Parse(Console.ReadLine());
+
+            facade.EditBankAccount(id, newName, newBalance);
+            Console.WriteLine("Счет успешно отредактирован.");
+        }
+
+        private static void DeleteBankAccount(BankAccountFacade facade)
+        {
+            Console.Write("Введите ID счета для удаления: ");
+            var id = int.Parse(Console.ReadLine());
+
+            facade.DeleteBankAccount(id);
+            Console.WriteLine("Счет успешно удален.");
+        }
+        
+        private static void EditCategory(CategoryFacade facade)
+        {
+            Console.Write("Введите ID категории для редактирования: ");
+            var id = int.Parse(Console.ReadLine());
+            Console.Write("Введите новый тип категории (Income/Expense): ");
+            var newType = Console.ReadLine();
+            Console.Write("Введите новое название категории: ");
+            var newName = Console.ReadLine();
+
+            facade.EditCategory(id, newType, newName);
+            Console.WriteLine("Категория успешно отредактирована.");
+        }
+
+        private static void DeleteCategory(CategoryFacade facade)
+        {
+            Console.Write("Введите ID категории для удаления: ");
+            var id = int.Parse(Console.ReadLine());
+
+            facade.DeleteCategory(id);
+            Console.WriteLine("Категория успешно удалена.");
+        }
+        
+        private static void EditOperation(OperationFacade facade)
+        {
+            Console.Write("Введите ID операции для редактирования: ");
+            var id = int.Parse(Console.ReadLine());
+            Console.Write("Введите новый тип операции (Income/Expense): ");
+            var newType = Console.ReadLine();
+            Console.Write("Введите новый ID счета: ");
+            var newBankAccountId = int.Parse(Console.ReadLine());
+            Console.Write("Введите новую сумму: ");
+            var newAmount = decimal.Parse(Console.ReadLine());
+            Console.Write("Введите новую дату (yyyy-MM-dd): ");
+            var newDate = DateTime.Parse(Console.ReadLine());
+            Console.Write("Введите новое описание: ");
+            var newDescription = Console.ReadLine();
+            Console.Write("Введите новый ID категории: ");
+            var newCategoryId = int.Parse(Console.ReadLine());
+
+            facade.EditOperation(id, newType, newBankAccountId, newAmount, newDate, newDescription, newCategoryId);
+            Console.WriteLine("Операция успешно отредактирована.");
+        }
+
+        private static void DeleteOperation(OperationFacade facade)
+        {
+            Console.Write("Введите ID операции для удаления: ");
+            var id = int.Parse(Console.ReadLine());
+
+            facade.DeleteOperation(id);
+            Console.WriteLine("Операция успешно удалена.");
+        }
+        
         private static void ShowIncomeExpenseDifference(OperationFacade facade)
         {
             Console.Write("Введите начальную дату (yyyy-MM-dd): ");
